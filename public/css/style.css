@@ -1,0 +1,324 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    min-height: 70vh;
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.boton {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.boton:hover {
+    opacity: 0.8;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+.productos {
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.productos h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.productos > p {
+    margin-bottom: 40px;
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.producto-card {
+    background-color: white;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.producto-card h3 {
+    margin: 20px 0 15px;
+}
+
+.producto-card p {
+    margin-bottom: 8px;
+}
+
+.producto-imagen {
+    height: 200px;
+    background-color: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    border-radius: 5px;
+}
+
+.producto-card .boton {
+    margin-top: 15px;
+}
+.detalle-producto {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.detalle-imagen {
+    min-height: 400px;
+    background-color: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    border-radius: 5px;
+}
+
+.detalle-informacion h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.detalle-informacion p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.acciones-producto {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.boton-secundario {
+    background-color: #777;
+}
+.formulario-container {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 35px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.formulario-container h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.formulario-container > p {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.campo input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.formulario-container button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formulario-enlace {
+    margin-top: 25px;
+}
+
+.formulario-enlace a {
+    color: #333;
+    font-weight: bold;
+}
+
+.producto-reserva {
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.producto-reserva h3 {
+    margin-bottom: 15px;
+}
+
+.producto-reserva p {
+    margin-bottom: 8px;
+}
+
+.campo select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+}
+.confirmacion-container {
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 50px 35px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.confirmacion-icono {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.confirmacion-container h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.confirmacion-container p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.confirmacion-acciones {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.reservas-container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 30px;
+}
+
+.reservas-container h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.reservas-container > p {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.reserva-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.reserva-info h3 {
+    margin-bottom: 15px;
+}
+
+.reserva-info p {
+    margin-bottom: 8px;
+}
+
+.estado-reserva {
+    font-weight: bold;
+}
+
+.reserva-acciones {
+    flex-shrink: 0;
+}
