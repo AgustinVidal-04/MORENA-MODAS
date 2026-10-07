@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 
 const { prueba } = require("./controllers/pruebacontroller");
 
@@ -12,6 +13,9 @@ const PORT = 3000;
 
 // Permite recibir datos en formato JSON
 app.use(express.json());
+
+// Permite las peticiones desde el front-end
+app.use(cors());
 
 // Permite recibir datos enviados mediante formularios
 app.use(express.urlencoded({ extended: true }));

@@ -1,6 +1,7 @@
 const reservaForm = document.getElementById("reservaForm");
 
 const parametros = new URLSearchParams(window.location.search);
+
 const productoSeleccionado = parametros.get("producto");
 
 const nombreProducto = document.getElementById("nombreProducto");
@@ -13,13 +14,18 @@ const nombreProducto = document.getElementById("nombreProducto");
 if (nombreProducto && productoSeleccionado) {
 
     const productos = {
+
         remera: "Remera básica",
         campera: "Campera urbana",
         pantalon: "Pantalón wide leg"
+
     };
 
     if (productos[productoSeleccionado]) {
-        nombreProducto.textContent = productos[productoSeleccionado];
+
+        nombreProducto.textContent =
+            productos[productoSeleccionado];
+
     }
 }
 
@@ -40,6 +46,7 @@ if (campoFecha) {
         String(hoy.getDate()).padStart(2, "0");
 
     campoFecha.min = fechaHoy;
+
 }
 
 
@@ -48,6 +55,7 @@ if (campoFecha) {
 // ==============================
 
 const campoHorario = document.getElementById("horario");
+
 
 function actualizarHorarios() {
 
@@ -69,7 +77,8 @@ function actualizarHorarios() {
         String(hoy.getDate()).padStart(2, "0");
 
 
-    const opcionesHorario = Array.from(campoHorario.options);
+    const opcionesHorario =
+        Array.from(campoHorario.options);
 
 
     // Primero habilitamos todos los horarios
@@ -81,6 +90,7 @@ function actualizarHorarios() {
         }
 
         opcion.disabled = false;
+
     });
 
 
@@ -99,26 +109,39 @@ function actualizarHorarios() {
                 return;
             }
 
-            const partes = opcion.value.split(":");
+            const partes =
+                opcion.value.split(":");
 
-            const hora = Number(partes[0]);
-            const minutos = Number(partes[1]);
+            const hora =
+                Number(partes[0]);
+
+            const minutos =
+                Number(partes[1]);
 
             const minutosHorario =
                 hora * 60 + minutos;
 
 
             if (minutosHorario <= horaActual) {
+
                 opcion.disabled = true;
+
             }
 
         });
+
     }
+
 }
 
 
 if (campoFecha) {
-    campoFecha.addEventListener("change", actualizarHorarios);
+
+    campoFecha.addEventListener(
+        "change",
+        actualizarHorarios
+    );
+
 }
 
 
@@ -129,87 +152,173 @@ if (campoFecha) {
 
 if (reservaForm) {
 
-    reservaForm.addEventListener("submit", function(event) {
+    reservaForm.addEventListener(
+        "submit",
+        async function(event) {
 
-        event.preventDefault();
-
-
-        const talle =
-            document.getElementById("talle").value;
-
-        const color =
-            document.getElementById("color").value;
-
-        const fecha =
-            document.getElementById("fecha").value;
-
-        const horario =
-            document.getElementById("horario").value;
+            event.preventDefault();
 
 
-        // Validar campos obligatorios
+            const talle =
+                document.getElementById("talle").value;
 
-        if (!talle || !color || !fecha || !horario) {
+            const color =
+                document.getElementById("color").value;
 
-            alert("Completá todos los datos de la reserva.");
+            const fecha =
+                document.getElementById("fecha").value;
 
-            return;
-        }
-
-
-        // ==============================
-        // CALCULAR DURACIÓN DE 24 HORAS
-        // ==============================
-
-        const fechaHoraInicio =
-            `${fecha}T${horario}`;
-
-        const inicio =
-            new Date(fechaHoraInicio);
+            const horario =
+                document.getElementById("horario").value;
 
 
-        const vencimiento =
-            new Date(
-                inicio.getTime() +
-                24 * 60 * 60 * 1000
+            // Validar campos obligatorios
+
+            if (!talle || !color || !fecha || !horario) {
+
+                alert(
+                    "Completá todos los datos de la reserva."
+                );
+
+                return;
+
+            }
+
+
+            // ==============================
+            // CALCULAR DURACIÓN DE 24 HORAS
+            // ==============================
+
+            const fechaHoraInicio =
+                `${fecha}T${horario}`;
+
+            const inicio =
+                new Date(fechaHoraInicio);
+
+
+            const vencimiento =
+                new Date(
+                    inicio.getTime() +
+                    24 * 60 * 60 * 1000
+                );
+
+
+            // ==============================
+            // GUARDAR RESERVA LOCALMENTE
+            // ==============================
+
+            const reserva = {
+
+                producto:
+                    nombreProducto.textContent,
+
+                talle: talle,
+
+                color: color,
+
+                fecha: fecha,
+
+                horario: horario,
+
+                inicio: fechaHoraInicio,
+
+                vencimiento:
+                    vencimiento.toISOString(),
+
+                estado: "Pendiente"
+
+            };
+
+
+            localStorage.setItem(
+                "reservaActual",
+                JSON.stringify(reserva)
             );
 
 
-        // ==============================
-        // GUARDAR RESERVA
-        // ==============================
+            // ==============================
+            // ENVIAR RESERVA AL BACK-END
+            // ==============================
 
-        const reserva = {
+            try {
 
-            producto: nombreProducto.textContent,
+                const respuesta =
+                    await fetch(
+                        "http://localhost:3000/api/reservas",
+                        {
+                            method: "POST",
 
-            talle: talle,
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
 
-            color: color,
+                            body: JSON.stringify({
 
-            fecha: fecha,
+                                id_cliente: 1,
 
-            horario: horario,
+                                id_usuario: 1,
 
-            inicio: fechaHoraInicio,
+                                fecha_reserva: fecha,
 
-            vencimiento: vencimiento.toISOString(),
+                                fecha_prueba: fecha,
 
-            estado: "Pendiente"
-        };
+                                estado: "Pendiente"
 
-
-        localStorage.setItem(
-            "reservaActual",
-            JSON.stringify(reserva)
-        );
-
-
-        alert("Reserva validada correctamente.");
+                            })
+                        }
+                    );
 
 
-        window.location.href =
-            "confirmacion.html";
+                const datos =
+                    await respuesta.json();
 
-    });
+
+                if (!respuesta.ok) {
+
+                    console.error(
+                        "Error del servidor:",
+                        datos
+                    );
+
+                    alert(
+                        "No se pudo guardar la reserva en la base de datos."
+                    );
+
+                    return;
+
+                }
+
+
+                console.log(
+                    "Reserva guardada en MariaDB:",
+                    datos
+                );
+
+
+                alert(
+                    "Reserva realizada correctamente."
+                );
+
+
+                window.location.href =
+                    "confirmacion.html";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Error al conectar con el back-end:",
+                    error
+                );
+
+                alert(
+                    "No se pudo conectar con el servidor."
+                );
+
+            }
+
+        }
+    );
+
 }
