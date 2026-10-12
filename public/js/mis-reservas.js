@@ -1,35 +1,33 @@
-// ==============================
 // CONTROL DE ACCESO
-// ==============================
-
 const usuarioLogueado =
     localStorage.getItem("usuarioLogueado");
-
 if (usuarioLogueado !== "true") {
-
-    window.location.href = "login.html";
+window.location.href = "login.html";
 
 } else {
+// OBTENER RESERVA
 
-    // ==============================
-    // OBTENER RESERVA
-    // ==============================
+const reservaGuardada =
+    localStorage.getItem("reservaActual");
 
-    const reservaGuardada =
-        localStorage.getItem("reservaActual");
+if (reservaGuardada) {
 
-    if (reservaGuardada) {
+    const reserva =
+        JSON.parse(reservaGuardada);
 
-        const reserva =
-            JSON.parse(reservaGuardada);
+    // Ocultar reservas del producto viejo
+
+    if (reserva.producto === "Campera urbana") {
+
+        localStorage.removeItem("reservaActual");
+
+    } else {
 
         const reservasContainer =
             document.querySelector(".reservas-container");
 
 
-        // ==============================
         // COMPROBAR SI LA RESERVA VENCIO
-        // ==============================
 
         if (reserva.vencimiento) {
 
@@ -46,13 +44,13 @@ if (usuarioLogueado !== "true") {
                     "reservaActual",
                     JSON.stringify(reserva)
                 );
+
             }
+
         }
 
 
-        // ==============================
         // FORMATEAR FECHA DE INICIO
-        // ==============================
 
         const fechaInicio =
             reserva.fecha
@@ -61,11 +59,10 @@ if (usuarioLogueado !== "true") {
                 .join("/");
 
 
-        // ==============================
         // FORMATEAR FECHA DE VENCIMIENTO
-        // ==============================
 
         let fechaVencimiento = "";
+
         let horaVencimiento = "";
 
 
@@ -95,12 +92,11 @@ if (usuarioLogueado !== "true") {
                 String(
                     vencimiento.getMinutes()
                 ).padStart(2, "0");
+
         }
 
 
-        // ==============================
         // CREAR TARJETA DE RESERVA
-        // ==============================
 
         const reservaCard =
             document.createElement("div");
@@ -174,61 +170,87 @@ if (usuarioLogueado !== "true") {
         reservasContainer.appendChild(
             reservaCard
         );
+
     }
 
-
-    // ==============================
-    // CANCELAR RESERVA
-    // ==============================
-
-    const botonesCancelar =
-        document.querySelectorAll(
-            ".boton-cancelar"
-        );
+}
 
 
-    botonesCancelar.forEach(function(boton) {
+// CANCELAR RESERVA
 
-        boton.addEventListener(
-            "click",
-            function() {
-
-                const confirmar =
-                    confirm(
-                        "¿Estás seguro de que querés cancelar esta reserva?"
-                    );
+const botonesCancelar =
+    document.querySelectorAll(
+        ".boton-cancelar"
+    );
 
 
-                if (!confirmar) {
-                    return;
-                }
+botonesCancelar.forEach(function(boton) {
+
+    boton.addEventListener(
+        "click",
+        function() {
+
+            const confirmar =
+                confirm(
+                    "¿Estás seguro de que querés cancelar esta reserva?"
+                );
 
 
-                const reservaCard =
-                    boton.closest(
-                        ".reserva-card"
-                    );
+            if (!confirmar) {
 
-
-                const estado =
-                    reservaCard.querySelector(
-                        ".estado-reserva"
-                    );
-
-
-                estado.textContent =
-                    "Cancelada";
-
-
-                boton.textContent =
-                    "Reserva cancelada";
-
-
-                boton.disabled = true;
+                return;
 
             }
-        );
 
-    });
+
+            const reservaCard =
+                boton.closest(
+                    ".reserva-card"
+                );
+
+
+            const estado =
+                reservaCard.querySelector(
+                    ".estado-reserva"
+                );
+
+
+            estado.textContent =
+                "Cancelada";
+
+
+            boton.textContent =
+                "Reserva cancelada";
+
+
+            boton.disabled = true;
+
+
+            // Actualizar el estado en localStorage
+
+            const reservaActual =
+                localStorage.getItem(
+                    "reservaActual"
+                );
+
+
+            if (reservaActual) {
+
+                const reserva =
+                    JSON.parse(reservaActual);
+
+                reserva.estado = "Cancelada";
+
+                localStorage.setItem(
+                    "reservaActual",
+                    JSON.stringify(reserva)
+                );
+
+            }
+
+        }
+    );
+
+});
 
 }

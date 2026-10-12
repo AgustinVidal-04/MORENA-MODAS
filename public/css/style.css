@@ -1,3 +1,8 @@
+```css
+/* ================================
+   MORENA MODAS - ESTILO GENERAL
+   ================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,88 +11,145 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
-    color: #333;
+    background: linear-gradient(135deg, #fff4ed 0%, #f9e0d4 50%, #f4c8b8 100%);
+    color: #3b1715;
+    min-height: 100vh;
 }
 
+/* ================================
+   HEADER / NAVBAR
+   ================================ */
+
 header {
-    background-color: #ffffff;
+    background: linear-gradient(90deg, #7f1712, #a82b20, #8f211b);
     padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 4px solid #d94b35;
+    box-shadow: 0 4px 15px rgba(92, 25, 20, 0.25);
 }
 
 header h1 {
-    font-size: 28px;
+    font-size: 30px;
+    color: #fff8f3;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 nav {
     display: flex;
-    gap: 20px;
+    gap: 22px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 nav a {
     text-decoration: none;
-    color: #333;
+    color: #fff8f3;
     font-weight: bold;
+    transition: 0.3s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: #ffd0c2;
+    transform: translateY(-2px);
 }
+
+/* ================================
+   CONTENIDO GENERAL
+   ================================ */
 
 main {
     min-height: 70vh;
 }
 
+/* ================================
+   HERO
+   ================================ */
+
 .hero {
     text-align: center;
-    padding: 100px 20px;
+    padding: 120px 20px;
+    background:
+        radial-gradient(circle at top left, rgba(217, 75, 53, 0.20), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(127, 23, 18, 0.20), transparent 35%);
 }
 
 .hero h2 {
-    font-size: 40px;
+    font-size: 48px;
     margin-bottom: 20px;
+    color: #751813;
+    letter-spacing: 1px;
 }
 
 .hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
+    font-size: 19px;
+    margin-bottom: 35px;
+    color: #5b2925;
 }
+
+/* ================================
+   BOTONES
+   ================================ */
 
 .boton {
     display: inline-block;
-    padding: 12px 25px;
-    background-color: #333;
+    padding: 13px 28px;
+    background: linear-gradient(135deg, #d94b35, #a82b20);
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 5px 12px rgba(126, 30, 22, 0.25);
+    transition: 0.3s ease;
 }
 
 .boton:hover {
-    opacity: 0.8;
+    background: linear-gradient(135deg, #a82b20, #751813);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 16px rgba(126, 30, 22, 0.35);
 }
+
+.boton-secundario {
+    background: #6d3933;
+}
+
+.boton-secundario:hover {
+    background: #4d2622;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
 
 footer {
     text-align: center;
-    padding: 20px;
-    background-color: #ffffff;
-    border-top: 1px solid #ddd;
+    padding: 25px;
+    background: linear-gradient(90deg, #65130f, #801c16);
+    color: #ffece5;
+    border-top: 4px solid #d94b35;
 }
+
+/* ================================
+   PRODUCTOS
+   ================================ */
+
 .productos {
-    padding: 60px 40px;
+    padding: 70px 40px;
     text-align: center;
+    background: rgba(255, 244, 237, 0.45);
 }
 
 .productos h2 {
-    font-size: 36px;
+    font-size: 38px;
     margin-bottom: 15px;
+    color: #751813;
 }
 
 .productos > p {
     margin-bottom: 40px;
+    color: #63312c;
 }
 
 .productos-grid {
@@ -99,64 +161,96 @@ footer {
 }
 
 .producto-card {
-    background-color: white;
+    background: linear-gradient(145deg, #fffaf7, #fce8df);
     padding: 25px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid #e6b7aa;
+    border-radius: 14px;
     text-align: left;
+    box-shadow: 0 8px 20px rgba(110, 39, 31, 0.13);
+    transition: 0.3s ease;
+}
+
+.producto-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(110, 39, 31, 0.20);
 }
 
 .producto-card h3 {
     margin: 20px 0 15px;
+    color: #7f1712;
+    font-size: 22px;
 }
 
 .producto-card p {
     margin-bottom: 8px;
+    color: #5b2925;
 }
 
 .producto-imagen {
-    height: 200px;
-    background-color: #eeeeee;
+    height: 230px;
+    background: linear-gradient(135deg, #e9b7a7, #f7d8cc);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #777;
-    border-radius: 5px;
+    color: #71332d;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.producto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .producto-card .boton {
     margin-top: 15px;
 }
+
+/* ================================
+   DETALLE DEL PRODUCTO
+   ================================ */
+
 .detalle-producto {
     max-width: 1000px;
     margin: 60px auto;
-    padding: 30px;
+    padding: 35px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    background: linear-gradient(145deg, #fffaf7, #fce8df);
+    border: 1px solid #e6b7aa;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(110, 39, 31, 0.15);
 }
 
 .detalle-imagen {
     min-height: 400px;
-    background-color: #eeeeee;
+    background: linear-gradient(135deg, #e9b7a7, #f7d8cc);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #777;
-    border-radius: 5px;
+    color: #71332d;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.detalle-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .detalle-informacion h2 {
-    font-size: 36px;
+    font-size: 38px;
     margin-bottom: 20px;
+    color: #751813;
 }
 
 .detalle-informacion p {
     margin-bottom: 15px;
-    line-height: 1.5;
+    line-height: 1.6;
+    color: #5b2925;
 }
 
 .acciones-producto {
@@ -166,27 +260,31 @@ footer {
     flex-wrap: wrap;
 }
 
-.boton-secundario {
-    background-color: #777;
-}
+/* ================================
+   FORMULARIOS
+   ================================ */
+
 .formulario-container {
     max-width: 500px;
     margin: 60px auto;
-    padding: 35px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    padding: 40px;
+    background: linear-gradient(145deg, #fffaf7, #fce8df);
+    border: 1px solid #e6b7aa;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(110, 39, 31, 0.15);
 }
 
 .formulario-container h2 {
     text-align: center;
     font-size: 32px;
     margin-bottom: 15px;
+    color: #751813;
 }
 
 .formulario-container > p {
     text-align: center;
     margin-bottom: 30px;
+    color: #63312c;
 }
 
 .campo {
@@ -197,14 +295,23 @@ footer {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
+    color: #5b2925;
 }
 
 .campo input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid #d8a99c;
+    border-radius: 7px;
     font-size: 16px;
+    background-color: #fffaf7;
+    color: #3b1715;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: #d94b35;
+    box-shadow: 0 0 0 3px rgba(217, 75, 53, 0.15);
 }
 
 .formulario-container button {
@@ -216,22 +323,29 @@ footer {
 
 .formulario-enlace {
     margin-top: 25px;
+    text-align: center;
 }
 
 .formulario-enlace a {
-    color: #333;
+    color: #a82b20;
     font-weight: bold;
 }
+
+/* ================================
+   RESERVA
+   ================================ */
 
 .producto-reserva {
     padding: 20px;
     margin-bottom: 30px;
-    background-color: #f5f5f5;
-    border-radius: 5px;
+    background: linear-gradient(135deg, #f6d5ca, #f9e7e0);
+    border-left: 5px solid #d94b35;
+    border-radius: 8px;
 }
 
 .producto-reserva h3 {
     margin-bottom: 15px;
+    color: #751813;
 }
 
 .producto-reserva p {
@@ -240,35 +354,49 @@ footer {
 
 .campo select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid #d8a99c;
+    border-radius: 7px;
     font-size: 16px;
-    background-color: white;
+    background-color: #fffaf7;
+    color: #3b1715;
 }
+
+.campo select:focus {
+    outline: none;
+    border-color: #d94b35;
+}
+
+/* ================================
+   CONFIRMACIÓN
+   ================================ */
+
 .confirmacion-container {
     max-width: 700px;
     margin: 80px auto;
     padding: 50px 35px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    background: linear-gradient(145deg, #fffaf7, #fce8df);
+    border: 1px solid #e6b7aa;
+    border-radius: 15px;
     text-align: center;
+    box-shadow: 0 10px 25px rgba(110, 39, 31, 0.15);
 }
 
 .confirmacion-icono {
-    font-size: 50px;
+    font-size: 55px;
     margin-bottom: 20px;
 }
 
 .confirmacion-container h2 {
-    font-size: 32px;
+    font-size: 34px;
     margin-bottom: 20px;
+    color: #751813;
 }
 
 .confirmacion-container p {
     margin-bottom: 15px;
     line-height: 1.5;
+    color: #5b2925;
 }
 
 .confirmacion-acciones {
@@ -278,6 +406,11 @@ footer {
     gap: 15px;
     flex-wrap: wrap;
 }
+
+/* ================================
+   MIS RESERVAS
+   ================================ */
+
 .reservas-container {
     max-width: 900px;
     margin: 60px auto;
@@ -288,37 +421,339 @@ footer {
     text-align: center;
     font-size: 36px;
     margin-bottom: 15px;
+    color: #751813;
 }
 
 .reservas-container > p {
     text-align: center;
     margin-bottom: 40px;
+    color: #63312c;
 }
 
 .reserva-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    background: linear-gradient(145deg, #fffaf7, #fce8df);
+    border: 1px solid #e6b7aa;
+    border-radius: 12px;
     padding: 25px;
     margin-bottom: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    box-shadow: 0 7px 18px rgba(110, 39, 31, 0.12);
 }
 
 .reserva-info h3 {
     margin-bottom: 15px;
+    color: #7f1712;
 }
 
 .reserva-info p {
     margin-bottom: 8px;
+    color: #5b2925;
 }
 
 .estado-reserva {
     font-weight: bold;
+    color: #a82b20;
 }
 
 .reserva-acciones {
     flex-shrink: 0;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 800px) {
+
+    header {
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .hero h2 {
+        font-size: 36px;
+    }
+
+    .productos-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
+    .detalle-producto {
+        grid-template-columns: 1fr;
+        margin: 30px 20px;
+    }
+
+    .formulario-container {
+        margin: 40px 20px;
+    }
+
+    .reserva-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Ajustes visuales para Mis reservas */
+.reservas-container {
+    width: min(900px, calc(100% - 32px));
+    margin: 50px auto;
+    padding: 36px;
+    background: rgba(255, 250, 247, 0.72);
+    border: 1px solid rgba(230, 183, 170, 0.8);
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(110, 39, 31, 0.10);
+}
+
+.reservas-container h2 {
+    margin-bottom: 10px;
+}
+
+.reservas-container > p {
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.reserva-card {
+    padding: 28px;
+    border-left: 5px solid #d94b35;
+    border-radius: 14px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reserva-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(110, 39, 31, 0.17);
+}
+
+.reserva-info h3 {
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.reserva-info p {
+    line-height: 1.5;
+}
+
+.estado-reserva {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 4px 10px;
+    background: #f6d5ca;
+    border-radius: 999px;
+}
+
+.reserva-acciones .boton {
+    cursor: pointer;
+    border: 0;
+}
+
+.reserva-acciones .boton:disabled {
+    background: #7b7775;
+    box-shadow: none;
+    cursor: default;
+    transform: none;
+}
+
+@media (max-width: 600px) {
+    .reservas-container {
+        width: calc(100% - 24px);
+        margin: 28px auto;
+        padding: 24px 18px;
+    }
+
+    .reservas-container h2 {
+        font-size: 30px;
+    }
+
+    .reserva-card {
+        padding: 20px;
+    }
+
+    .reserva-acciones,
+    .reserva-acciones .boton {
+        width: 100%;
+    }
+}
+
+/* Ajustes visuales para Productos */
+.productos {
+    padding: 70px 24px;
+}
+
+.productos > p {
+    max-width: 600px;
+    margin: 0 auto 38px;
+    line-height: 1.6;
+}
+
+.productos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    align-items: stretch;
+    gap: 24px;
+}
+
+.producto-card {
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    overflow: hidden;
+}
+
+.producto-imagen {
+    height: 260px;
+    background: linear-gradient(135deg, #efd0c5, #f9e8e1);
+}
+
+.producto-card h3 {
+    margin: 20px 0 12px;
+    line-height: 1.3;
+}
+
+.producto-card p {
+    line-height: 1.5;
+}
+
+.producto-card .boton {
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 12px 22px;
+}
+
+.producto-card:focus-within {
+    outline: 3px solid rgba(217, 75, 53, 0.45);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .productos {
+        padding: 46px 18px;
+    }
+
+    .productos h2 {
+        font-size: 32px;
+    }
+
+    .productos-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+
+    .producto-imagen {
+        height: 230px;
+    }
+}
+
+/* Ajustes visuales para Inicio */
+.hero {
+    min-height: 480px;
+    padding: 110px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h2 {
+    max-width: 850px;
+    font-size: clamp(36px, 6vw, 54px);
+    line-height: 1.12;
+    text-wrap: balance;
+}
+
+.hero p {
+    max-width: 650px;
+    line-height: 1.7;
+    text-wrap: balance;
+}
+
+.hero .boton {
+    padding: 14px 30px;
+    border-radius: 999px;
+}
+
+.hero .boton:focus-visible,
+nav a:focus-visible {
+    outline: 3px solid #ffd0c2;
+    outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+    .hero {
+        min-height: 400px;
+        padding: 75px 20px;
+    }
+
+    .hero h2 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+}
+
+/* Ajustes visuales para encabezado y pie */
+header {
+    position: relative;
+    padding: 20px clamp(20px, 5vw, 56px);
+}
+
+header h1 {
+    font-size: clamp(23px, 3vw, 30px);
+}
+
+nav a {
+    padding: 9px 12px;
+    border-radius: 999px;
+}
+
+nav a:hover {
+    background: rgba(255, 248, 243, 0.12);
+}
+
+nav a:focus-visible {
+    outline: 2px solid #ffd0c2;
+    outline-offset: 3px;
+}
+
+.enlace-mis-reservas {
+    background: rgba(255, 248, 243, 0.15);
+}
+
+footer {
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 20px 16px;
+    }
+
+    nav {
+        gap: 6px;
+    }
+
+    nav a {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 20px 16px;
+        font-size: 14px;
+    }
 }
